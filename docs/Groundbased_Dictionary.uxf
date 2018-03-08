@@ -253,13 +253,24 @@ vertical_pixel_footprint: real
       <w>300</w>
       <h>100</h>
     </coordinates>
-    <panel_attributes>Other distance fields are in this class,
-related to the spacecraft distance. 
-These are probably irrelevant for 
-ground based observations and should 
-be disallowed.
-bg=blue
+    <panel_attributes>We should not directly depend on the geometry
+dictionary classes. We will probably either need
+to clone these definitions or define our own
+versions.
+bg=red
 </panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>2490</x>
+      <y>590</y>
+      <w>140</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>Note..
+bg=blue</panel_attributes>
     <additional_attributes/>
   </element>
 </diagram>

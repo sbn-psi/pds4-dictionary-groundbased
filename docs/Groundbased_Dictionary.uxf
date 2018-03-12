@@ -13,7 +13,7 @@
 --
 airmass: real
 apparentVisualMagnitude: real
-starName:string</panel_attributes>
+</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -259,18 +259,6 @@ to clone these definitions or define our own
 versions.
 bg=red
 </panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLNote</id>
-    <coordinates>
-      <x>2490</x>
-      <y>590</y>
-      <w>140</w>
-      <h>70</h>
-    </coordinates>
-    <panel_attributes>Note..
-bg=blue</panel_attributes>
     <additional_attributes/>
   </element>
 </diagram>

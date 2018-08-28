@@ -1,0 +1,90 @@
+@startuml
+
+title Groundbased Dictionary Class Diagram
+
+class Groundbased_Parameters {
+    apparentVisualMagnitude: real
+}
+note top 
+    This class is intended to provide additional metadata for groundbased observations.
+    Much of the information is geometry information, but in a ground-based context.
+    ....
+    Typically, this would go into the geometry dictionary,
+    but the geometry dictionary is currently focused solely on missions.
+end note
+
+class Airmass {
+    airmass: real
+    measurementTime: date
+    measurementX: integer
+    measurementY: integer
+}
+
+class Geometry_Groundbased 
+note top 
+    We should not depend directly on the geometry classes.
+    We will either have to clone the geometry classes or define our own versions.
+end note
+
+class geom:Pixel_Dimensions {
+    pixel_field_of_view_method: string
+    horizontal_pixel_field_of_view: real
+    vertical_pixel_field_of_view: real
+}
+
+class geom:Derived_Geometry {
+    incidence_angle: real
+    emission_angle: real
+    phase_angle: real
+    instrument_azimuth: real
+    instrument_elevation: real
+    solar_azimuth: real
+    solar_elevation: real
+    start_azimuth: real
+    stop_azimuth: real
+}
+
+class geom:Distances
+
+class geom:Pixel_Size_Projected {
+    reference_location: string
+    distance: real
+    horizontal_pixel_footprint: real
+    vertical_pixel_footprint: real
+}
+
+class geom:Distances_Specific {
+    target_geocentric_distance: real
+    target_heliocentric_distance: real
+    target_ssb_distance: real
+}
+
+class geom:Distances_Min_Max {
+    minimum_target_geocentric_distance: real
+    maximum_target_geocentric_distance: real
+    minimum_target_heliocentric_distance: real
+    maximum_target_heliocentric_distance: real
+    minimum_target_ssb_distance: real
+    maximum_target_ssb_distance: real
+}
+
+class geom:Distances_Start_Stop {
+    start_target_geocentric_distance: real
+    stop_target_geocentric_distance: real
+    start_target_heliocentric_distance: real
+    stop_target_heliocentric_distance: real
+    start_target_ssb_distance: real
+    stop_target_ssb_distance: real
+}
+
+Groundbased_Parameters *-- Airmass
+Groundbased_Parameters *-- Geometry_Groundbased
+Geometry_Groundbased *-- "geom:Pixel_Dimensions"
+"geom:Pixel_Dimensions" *-- "geom:Pixel_Size_Projected"
+Geometry_Groundbased *-- "geom:Derived_Geometry"
+Geometry_Groundbased *-- "geom:Distances"
+"geom:Distances" *-- "geom:Distances_Specific"
+"geom:Distances" *-- "geom:Distances_Min_Max"
+"geom:Distances" *-- "geom:Distances_Start_Stop"
+
+@enduml

@@ -13,11 +13,48 @@ note top
     but the geometry dictionary is currently focused solely on missions.
 end note
 
+
+class Image_Orientation {
+    northClockAngle: real
+    eastClockAngle: real
+    clockDirection: string
+}
+note top
+    This is intended to deal with potential East-West flips,
+    and to make unambiguous the direction that clock angles are
+    measured in.
+endnote
+
+class Instrument_Parameters {
+    instrumentTemperature: real
+}
+note top
+    measures instrument temperatures, along with other potential
+    instrument parameters that may affect the observation.
+endnote
+
+class Quality {
+    photometric: boolean
+    notes: string
+}
+
 class Airmass {
     airmass: real
     measurementTime: date
     measurementX: integer
     measurementY: integer
+}
+
+class Seeing {
+    fwhm: real
+}
+
+class Weather {
+    temperature: real
+    pressure: real
+    humidity: real
+    clouds: real
+    notes: string
 }
 
 class Geometry_Groundbased 
@@ -77,7 +114,12 @@ class geom:Distances_Start_Stop {
     stop_target_ssb_distance: real
 }
 
-Groundbased_Parameters *-- Airmass
+Groundbased_Parameters *-- Image_Orientation
+Groundbased_Parameters *-- Instrument_Parameters
+Groundbased_Parameters *-- Quality
+Quality *-- Seeing
+Quality *-- Airmass
+Quality *-- Weather
 Groundbased_Parameters *-- Geometry_Groundbased
 Geometry_Groundbased *-- "geom:Pixel_Dimensions"
 "geom:Pixel_Dimensions" *-- "geom:Pixel_Size_Projected"
